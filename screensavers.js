@@ -32,10 +32,22 @@ let row = 0
 let column = 0
 let counter = 0
 let on = true
+let reloadxlimit = 5
+
 function fallingblocks() {
     if (wait >= 20) {
         wait = 0
         if (on) {
+            for(let reloadyindex = 0; reloadyindex <= column; reloadyindex++) {
+                if (reloadyindex == column) {
+                    reloadxlimit = row
+                } else {
+                    reloadxlimit = 4
+                }
+                for(let reloadxindex = 0; reloadxindex <= reloadxlimit; reloadxindex++) {
+                    led.plot(reloadxindex, 5 - reloadyindex)
+                }
+            }
             if (row == 4 && column == 4 && counter == 1) {
                 on = false
                 row = 0
@@ -635,11 +647,25 @@ let bpressed = false
 let changemode = false
 let modechangetimer = 0
 let button2stimer = 100
-
-let screensaverselect = 4
+let screensaverselect = 0
 
 basic.forever(function () {
     if (screensaver && timeoutcounter < timeout) {
+        if (input.isGesture(Gesture.LogoUp) && screensaverselect != 0) {
+            cls()
+            screensaverselect = 0
+        } else if (input.isGesture(Gesture.LogoUp) && screensaverselect == 0) {
+        } else if (input.isGesture(Gesture.LogoDown) && screensaverselect != 2) {
+            cls()
+            screensaverselect = 2
+        } else if (input.isGesture(Gesture.LogoDown) && screensaverselect == 2) {
+        } else if (input.isGesture(Gesture.ScreenUp) && screensaverselect != 4) {
+            cls()
+            screensaverselect = 4
+        } else if (input.isGesture(Gesture.ScreenUp) && screensaverselect == 4) {
+        } else {
+            screensaverselect = 1
+        }
         if (screensaverselect == 0) {
             fallingblocks()
         } else if (screensaverselect == 1) {
