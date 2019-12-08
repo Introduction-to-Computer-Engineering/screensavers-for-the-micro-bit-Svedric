@@ -1,5 +1,32 @@
 let screensaver = true
 // Each Screensaver function updates the pixels on the LED matrix
+function cls() {
+    led.unplot(0,0)
+    led.unplot(0,1)
+    led.unplot(0,2)
+    led.unplot(0,3)
+    led.unplot(0,4)
+    led.unplot(1,0)
+    led.unplot(1,1)
+    led.unplot(1,2)
+    led.unplot(1,3)
+    led.unplot(1,4)
+    led.unplot(2,0)
+    led.unplot(2,1)
+    led.unplot(2,2)
+    led.unplot(2,3)
+    led.unplot(2,4)
+    led.unplot(3,0)
+    led.unplot(3,1)
+    led.unplot(3,2)
+    led.unplot(3,3)
+    led.unplot(3,4)
+    led.unplot(4,0)
+    led.unplot(4,1)
+    led.unplot(4,2)
+    led.unplot(4,3)
+    led.unplot(4,4)
+}
 let row = 0
 let column = 0
 let counter = 0
@@ -344,8 +371,8 @@ function wanderer() {
                     if (xposition == obstacle3x && yposition == obstacle3y) {
                         xposition = 0
                         xydirectionselector = false
-                    } else {}
-                } else {}
+                    } else { }
+                } else { }
             } else if (xposition == obstacle2x && yposition == obstacle2y) {
                 yposition = 4
                 xydirectionselector = false
@@ -357,8 +384,8 @@ function wanderer() {
                         yposition = 0
                         xydirectionselector = false
                         direction = true
-                    } else {}
-                } else {}
+                    } else { }
+                } else { }
             } else if (xposition == obstacle3x && yposition == obstacle3y) {
                 xposition = 4
                 yposition = 4
@@ -370,9 +397,9 @@ function wanderer() {
                         xposition = 4
                         yposition = 0
                         direction = true
-                    } else {}
-                } else {}
-            } else {}
+                    } else { }
+                } else { }
+            } else { }
             led.plot(obstacle1x, obstacle1y)
             led.plot(obstacle2x, obstacle2y)
             led.plot(obstacle3x, obstacle3y)
@@ -386,14 +413,14 @@ function wanderer() {
                         direction = false
                         if (xposition - 1 == obstacle3x && yposition == obstacle3y) {
                             xydirectionselector = false
-                        } else {}
+                        } else { }
                     } else if (xposition == obstacle3x && yposition + 1 == obstacle3y) {
                         xydirectionselector = true
                         direction = false
                         if (xposition - 1 == obstacle2x && yposition == obstacle2y) {
                             xydirectionselector = false
-                        } else {}
-                    } else {}
+                        } else { }
+                    } else { }
                 } else if (xposition + 1 == obstacle2x && yposition == obstacle2y) {
                     xydirectionselector = false
                     if (xposition == obstacle1x && yposition + 1 == obstacle1y) {
@@ -401,14 +428,14 @@ function wanderer() {
                         direction = false
                         if (xposition - 1 == obstacle3x && yposition == obstacle3y) {
                             xydirectionselector = false
-                        } else {}
+                        } else { }
                     } else if (xposition == obstacle3x && yposition + 1 == obstacle3y) {
                         xydirectionselector = true
                         direction = false
                         if (xposition - 1 == obstacle1x && yposition == obstacle1y) {
                             xydirectionselector = false
-                        } else {}
-                    } else {}
+                        } else { }
+                    } else { }
                 } else if (xposition + 1 == obstacle3x && yposition == obstacle3y) {
                     xydirectionselector = false
                     if (xposition == obstacle2x && yposition + 1 == obstacle2y) {
@@ -416,15 +443,15 @@ function wanderer() {
                         direction = false
                         if (xposition - 1 == obstacle1x && yposition == obstacle1y) {
                             xydirectionselector = false
-                        } else {}
+                        } else { }
                     } else if (xposition == obstacle1x && yposition + 1 == obstacle1y) {
                         xydirectionselector = true
                         direction = false
                         if (xposition - 1 == obstacle2x && yposition == obstacle2y) {
                             xydirectionselector = false
-                        } else {}
-                    } else {}
-                } else {}
+                        } else { }
+                    } else { }
+                } else { }
             } else if (xydirectionselector && !direction) {
                 if ((xposition - 1 == obstacle1x && yposition == obstacle1y) || xposition < 1) {
                     xydirectionselector = false
@@ -433,14 +460,14 @@ function wanderer() {
                         direction = true
                         if (xposition + 1 == obstacle3x && yposition == obstacle3y) {
                             xydirectionselector = false
-                        } else {}
+                        } else { }
                     } else if (xposition == obstacle3x && yposition - 1 == obstacle3y) {
                         xydirectionselector = true
                         direction = true
                         if (xposition + 1 == obstacle2x && yposition == obstacle2y) {
                             xydirectionselector = false
-                        } else {}
-                    } else {}
+                        } else { }
+                    } else { }
                 } else if (xposition - 1 == obstacle2x && yposition == obstacle2y) {
                     xydirectionselector = false
                     if (xposition == obstacle1x && yposition - 1 == obstacle1y) {
@@ -448,14 +475,14 @@ function wanderer() {
                         direction = true
                         if (xposition + 1 == obstacle3x && yposition == obstacle3y) {
                             xydirectionselector = false
-                        } else {}
+                        } else { }
                     } else if (xposition == obstacle3x && yposition - 1 == obstacle3y) {
                         xydirectionselector = true
                         direction = true
                         if (xposition + 1 == obstacle1x && yposition == obstacle1y) {
                             xydirectionselector = false
-                        } else {}
-                    } else {}
+                        } else { }
+                    } else { }
                 } else if (xposition - 1 == obstacle3x && yposition == obstacle3y) {
                     xydirectionselector = false
                     if (xposition == obstacle2x && yposition - 1 == obstacle2y) {
@@ -463,15 +490,15 @@ function wanderer() {
                         direction = true
                         if (xposition + 1 == obstacle1x && yposition == obstacle1y) {
                             xydirectionselector = false
-                        } else {}
+                        } else { }
                     } else if (xposition == obstacle1x && yposition - 1 == obstacle1y) {
                         xydirectionselector = true
                         direction = true
                         if (xposition + 1 == obstacle2x && yposition == obstacle2y) {
                             xydirectionselector = false
-                        } else {}
-                    } else {}
-                } else {}
+                        } else { }
+                    } else { }
+                } else { }
             } else if (!xydirectionselector && direction) {
                 if ((xposition == obstacle1x && yposition + 1 == obstacle1y) || yposition > 3) {
                     xydirectionselector = true
@@ -481,30 +508,30 @@ function wanderer() {
                         if (xposition == obstacle3x && yposition - 1 == obstacle3y) {
                             xydirectionselector = true
                             direction = true
-                        } else {}
+                        } else { }
                     } else if (xposition - 1 == obstacle3x && yposition == obstacle3y) {
                         xydirectionselector = false
                         if (xposition == obstacle2x && yposition - 1 == obstacle2y) {
                             xydirectionselector = true
                             direction = true
-                        } else {}
-                    } else {}
+                        } else { }
+                    } else { }
                 } else if (xposition == obstacle2x && yposition + 1 == obstacle2y) {
                     xydirectionselector = true
                     direction = false
-                    if (xposition  - 1 == obstacle1x && yposition == obstacle1y) {
+                    if (xposition - 1 == obstacle1x && yposition == obstacle1y) {
                         xydirectionselector = false
                         if (xposition == obstacle3x && yposition - 1 == obstacle3y) {
                             xydirectionselector = true
                             direction = true
-                        } else {}
+                        } else { }
                     } else if (xposition - 1 == obstacle3x && yposition == obstacle3y) {
                         xydirectionselector = false
                         if (xposition == obstacle1x && yposition - 1 == obstacle1y) {
                             xydirectionselector = true
                             direction = true
-                        } else {}
-                    } else {}
+                        } else { }
+                    } else { }
                 } else if (xposition == obstacle3x && yposition + 1 == obstacle3y) {
                     xydirectionselector = true
                     direction = false
@@ -513,15 +540,15 @@ function wanderer() {
                         if (xposition == obstacle1x && yposition - 1 == obstacle1y) {
                             xydirectionselector = true
                             direction = true
-                        } else {}
+                        } else { }
                     } else if (xposition - 1 == obstacle1x && yposition == obstacle1y) {
                         xydirectionselector = false
                         if (xposition == obstacle2x && yposition - 1 == obstacle2y) {
                             xydirectionselector = true
                             direction = true
-                        } else {}
-                    } else {}
-                } else {}
+                        } else { }
+                    } else { }
+                } else { }
             } else if (!xydirectionselector && !direction) {
                 if ((xposition == obstacle1x && yposition - 1 == obstacle1y) || yposition < 1) {
                     xydirectionselector = true
@@ -531,14 +558,14 @@ function wanderer() {
                         if (xposition == obstacle3x && yposition + 1 == obstacle3y) {
                             xydirectionselector = true
                             direction = false
-                        } else {}
+                        } else { }
                     } else if (xposition + 1 == obstacle3x && yposition == obstacle3y) {
                         xydirectionselector = false
                         if (xposition == obstacle2x && yposition + 1 == obstacle2y) {
                             xydirectionselector = true
                             direction = false
-                        } else {}
-                    } else {}
+                        } else { }
+                    } else { }
                 } else if (xposition == obstacle2x && yposition - 1 == obstacle2y) {
                     xydirectionselector = true
                     direction = true
@@ -547,14 +574,14 @@ function wanderer() {
                         if (xposition == obstacle3x && yposition + 1 == obstacle3y) {
                             xydirectionselector = true
                             direction = false
-                        } else {}
+                        } else { }
                     } else if (xposition + 1 == obstacle3x && yposition == obstacle3y) {
                         xydirectionselector = false
                         if (xposition == obstacle1x && yposition + 1 == obstacle1y) {
                             xydirectionselector = true
                             direction = false
-                        } else {}
-                    } else {}
+                        } else { }
+                    } else { }
                 } else if (xposition == obstacle3x && yposition - 1 == obstacle3y) {
                     xydirectionselector = true
                     direction = true
@@ -563,16 +590,16 @@ function wanderer() {
                         if (xposition == obstacle1x && yposition + 1 == obstacle1y) {
                             xydirectionselector = true
                             direction = false
-                        } else {}
+                        } else { }
                     } else if (xposition + 1 == obstacle1x && yposition == obstacle1y) {
                         xydirectionselector = false
                         if (xposition == obstacle2x && yposition + 1 == obstacle2y) {
                             xydirectionselector = true
                             direction = false
-                        } else {}
-                    } else {}
-                } else {}
-            } else {}
+                        } else { }
+                    } else { }
+                } else { }
+            } else { }
             led.unplot(xposition, yposition)
             if (xydirectionselector && direction) {
                 xposition++
@@ -582,7 +609,7 @@ function wanderer() {
                 yposition++
             } else if (!xydirectionselector && !direction) {
                 yposition = yposition - 1
-            } else {}
+            } else { }
             led.plot(xposition, yposition)
         }
     } else {
@@ -590,17 +617,25 @@ function wanderer() {
     }
 }
 let screensaverselect = 4
+let timeout = 1000
+let timeoutcounter = 0
 basic.forever(function () {
-    if (screensaverselect == 0) {
-        fallingblocks()
-    } else if (screensaverselect == 1) {
-        spinningwheel()
-    } else if (screensaverselect == 2) {
-        wave()
-    } else if (screensaverselect == 3) {
-        descend()
-    } else if (screensaverselect == 4) {
-        wanderer()
-    }
+    if (timeoutcounter < timeout) {
+        if (screensaverselect == 0) {
+            fallingblocks()
+        } else if (screensaverselect == 1) {
+            spinningwheel()
+        } else if (screensaverselect == 2) {
+            wave()
+        } else if (screensaverselect == 3) {
+            descend()
+        } else if (screensaverselect == 4) {
+            wanderer()
+        }
+        timeoutcounter++
+        if (timeoutcounter == timeout) {
+            cls()
+        } else {}
+    } else { }
     control.waitMicros(1000)
 })
