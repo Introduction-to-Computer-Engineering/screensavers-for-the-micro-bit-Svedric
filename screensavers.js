@@ -1,32 +1,33 @@
 let screensaver = true
 // Each Screensaver function updates the pixels on the LED matrix
 function cls() {
-    led.unplot(0,0)
-    led.unplot(0,1)
-    led.unplot(0,2)
-    led.unplot(0,3)
-    led.unplot(0,4)
-    led.unplot(1,0)
-    led.unplot(1,1)
-    led.unplot(1,2)
-    led.unplot(1,3)
-    led.unplot(1,4)
-    led.unplot(2,0)
-    led.unplot(2,1)
-    led.unplot(2,2)
-    led.unplot(2,3)
-    led.unplot(2,4)
-    led.unplot(3,0)
-    led.unplot(3,1)
-    led.unplot(3,2)
-    led.unplot(3,3)
-    led.unplot(3,4)
-    led.unplot(4,0)
-    led.unplot(4,1)
-    led.unplot(4,2)
-    led.unplot(4,3)
-    led.unplot(4,4)
+    led.unplot(0, 0)
+    led.unplot(0, 1)
+    led.unplot(0, 2)
+    led.unplot(0, 3)
+    led.unplot(0, 4)
+    led.unplot(1, 0)
+    led.unplot(1, 1)
+    led.unplot(1, 2)
+    led.unplot(1, 3)
+    led.unplot(1, 4)
+    led.unplot(2, 0)
+    led.unplot(2, 1)
+    led.unplot(2, 2)
+    led.unplot(2, 3)
+    led.unplot(2, 4)
+    led.unplot(3, 0)
+    led.unplot(3, 1)
+    led.unplot(3, 2)
+    led.unplot(3, 3)
+    led.unplot(3, 4)
+    led.unplot(4, 0)
+    led.unplot(4, 1)
+    led.unplot(4, 2)
+    led.unplot(4, 3)
+    led.unplot(4, 4)
 }
+
 let row = 0
 let column = 0
 let counter = 0
@@ -87,6 +88,7 @@ function fallingblocks() {
         wait++
     }
 }
+
 let rotations = 0
 let wait = 0
 function spinningwheel() {
@@ -215,6 +217,7 @@ function spinningwheel() {
         wait++
     }
 }
+
 let waveposition = 2
 let waveform0 = 2
 let waveform1 = 2
@@ -252,6 +255,7 @@ function wave() {
         wait++
     }
 }
+
 let dposition = 0
 function descend() {
     if (wait >= 20) {
@@ -317,6 +321,7 @@ function descend() {
         wait++
     }
 }
+
 let gamereset = true
 let first = false
 let second = false
@@ -611,16 +616,30 @@ function wanderer() {
                 yposition = yposition - 1
             } else { }
             led.plot(xposition, yposition)
+            led.plot(obstacle1x, obstacle1y)
+            led.plot(obstacle2x, obstacle2y)
+            led.plot(obstacle3x, obstacle3y)
         }
     } else {
         wait++
     }
 }
-let screensaverselect = 4
+
+input.onButtonPressed(Button.A, () => {
+    screensaver = true
+})
+
 let timeout = 1000
 let timeoutcounter = 0
+let bpressed = false
+let changemode = false
+let modechangetimer = 0
+let button2stimer = 100
+
+let screensaverselect = 4
+
 basic.forever(function () {
-    if (timeoutcounter < timeout) {
+    if (screensaver && timeoutcounter < timeout) {
         if (screensaverselect == 0) {
             fallingblocks()
         } else if (screensaverselect == 1) {
@@ -631,11 +650,28 @@ basic.forever(function () {
             descend()
         } else if (screensaverselect == 4) {
             wanderer()
-        }
-        timeoutcounter++
+        } else { }
+        //timeoutcounter++
         if (timeoutcounter == timeout) {
             cls()
-        } else {}
+        } else { }
+        bpressed = input.buttonIsPressed(Button.B)
+        if (changemode && bpressed) {
+            if (modechangetimer >= button2stimer) {
+                modechangetimer = 0
+                screensaver = false
+                changemode = false
+            } else {
+                modechangetimer++
+            }
+        } else if (changemode && !bpressed) {
+            modechangetimer = 0
+            changemode = false
+        } else if (!changemode && bpressed) {
+            changemode = true
+        } else { }
+    } else if (!screensaver) {
+        basic.showString("Testing...")
     } else { }
     control.waitMicros(1000)
 })
